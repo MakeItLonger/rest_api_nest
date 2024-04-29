@@ -6,6 +6,8 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import CreateDto from './dto/create.dto';
@@ -22,6 +24,7 @@ export class AppController {
     return id;
   }
 
+  @UsePipes(new ValidationPipe())
   @Post('create')
   create(@Body() dto: CreateDto) {
     return dto;
